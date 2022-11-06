@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Increase or decrease</title>
+    <script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+    <script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+    <style>
+        body {
+            background-color: rgb(209, 239, 250);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Shopping Mania</h1>
+    <h2>The laptops section are shown below</h2>
+    <div id="container"></div>
+    <script type="text/babel">
+        class My_component extends React.Component {
+            constructor() {
+                super();
+                var today = new Date();
+                var startDate = (today.getDate()) + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+                var endDate = new Date(today.setDate(today.getDate() + 3)) + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+                this.state = { x1: 0, x2: 0, x3: 0, price1: 37999, price2: 55900, price3: 119000, total: 0, d1: startDate, d2: endDate }
+            }
+            render() {
+                var div_style = {
+                    display: "flex",
+                    flexDirection: "row",
+                }
+                var stylez =
+                {
+                    width: "350px",
+                    height: "250px",
+                    marginTop: "10px",
+                    marginLeft: "55px"
+                }
+                return (
+                    
+                        <div >
+                            <div style={stylez}>
+                                <div>
+                                    <table border="25">
+                                    <th>
+                                        <div style={{ div_style }}>
+                                            <h3>Lenovo IdeaPad 3</h3>
+                                            <h5>Description:</h5>
+                                            <p>Lenovo IdeaPad 3 11th Gen Intel Core i3 15.6 inch FHD Thin & Light Laptop(8GB/512GB SSD/Windows 11/Office 2021/2Yr Warranty/3months Xbox Game Pass/Platinum Grey/1.7Kg), 81X800LGIN</p>
+                                            <p>Price:₹37999</p>
+                                            <button onClick={this.increment1}>+</button>
+                                            <input type="text" value={this.state.x1} />
+                                            <button onClick={this.decrement1}>-</button>
+                                            <p></p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div style={{ div_style }}>
+                                            <h3>Acer Aspire 7</h3>
+                                            <h5>Description:</h5>
+                                            <p>Acer Aspire 7 AMD Ryzen 5 Hexa Core 5500U 15.6 inches Gaming Laptop (8GB/512GB SSD/Windows 11 Home/4GB Graphics/NVIDIA GeForce GTX 1650) A715-42G, Black, 2.15Kg</p>
+                                            <p>Price:₹55,900</p>
+                                            <button onClick={this.increment2}>+</button>
+                                            <input type="text" value={this.state.x2} />
+                                            <button onClick={this.decrement2}>-</button>
+                                            <p></p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div style={{ div_style }}>
+                                            <h3>Apple MacBook Air Laptop</h3>
+                                            <h5>Description:</h5>
+                                            <p>2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, 1080p FaceTime HD Camera. Works with iPhone/iPad; Silver</p>
+                                            <p>Price:₹1,19,900</p>
+                                            <button onClick={this.increment3}>+</button>
+                                            <input type="text" value={this.state.x3} />
+                                            <button onClick={this.decrement3}>-</button>
+                                            <p></p>
+                                        </div>
+                                    </th>
+                                </table>
+                                </div>
+                                <div>
+                                    <p>Total=₹{this.state.total}</p>
+                                    <p>Order date: {this.state.d1}</p>
+                                    <p>Expected delivery:{this.state.d2}</p>
+                                </div>
+                            </div>
+                        </div>
+                )
+            }
+            increment1 = () => {
+                this.setState({ x1: this.state.x1 + 1 })
+                this.setState({ total: this.state.total + this.state.price1 })
+            }
+            decrement1 = () => {
+                if (this.state.x1 > 0) {
+                    this.setState({ x1: this.state.x1 - 1 })
+                    this.setState({ total: this.state.total - this.state.price1 })
+                }
+            }
+            increment2 = () => {
+                this.setState({ x2: this.state.x2 + 1 })
+                this.setState({ total: this.state.total + this.state.price2 })
+            }
+            decrement2 = () => {
+                if (this.state.x2 > 0) {
+                    this.setState({ x2: this.state.x2 - 1 })
+                    this.setState({ total: this.state.total - this.state.price2 })
+                }
+            }
+            increment3 = () => {
+                this.setState({ x3: this.state.x3 + 1 })
+                this.setState({ total: this.state.total + this.state.price3 })
+            }
+            decrement3 = () => {
+                if (this.state.x3 > 0) {
+                    this.setState({ x3: this.state.x3 - 1 })
+                    this.setState({ total: this.state.total - this.state.price3 })
+                }
+            }
+        }
+        ReactDOM.render(<My_component />,
+            document.getElementById("container"))
+    </script>
+    </script>
+</body>
+</html>
